@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body style="height: 3000px;">
+    <div class="line"></div>
+    <script>
+        window.onload = function() {
+            let pageH = document.documentElement.scrollHeight || document.body.scrollHeight;
+            let windowH = document.documentElement.clientHeight || document.body.clientHeight;
+            // 获取可滚动的高度
+            let scrollAvail = pageH - windowH;
+            let line = document.querySelector('.line');
+            window.onscroll = function() {
+                let scr = document.documentElement.scrollTop || document.body.scrollTop;
+                line.style.width = (scr / scrollAvail) * 100 + '%';
+            }
+        }
+    </script>
+</body>
+
+</html>
